@@ -1,0 +1,17 @@
+AllCops:
+  NewCops: enable
+  # Lint:
+  #   Severity: error
+  # Metrics/CyclomaticComplexity:
+  #   Severity: warning
+  Exclude:
+        <% `git status --ignored --porcelain`.lines.grep(/^!! /).each do |path| %>
+          - <%= path.sub(/^!! /, '') %>
+        <% end %>
+        - '**/*.rb'
+        - '**/*.gemfile'
+        - '**/*.gemspec'
+        - '**/*.rake'
+        - '**/*.ru'
+        - '**/Gemfile'
+        - '**/Rakefile'

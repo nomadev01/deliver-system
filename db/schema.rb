@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_28_111637) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_043652) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "listing_id", null: false
+    t.text "message"
+    t.boolean "seen"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_inboxes_on_listing_id"
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -21,6 +39,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_111637) do
     t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category_id", null: false
+    t.integer "listing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_states_on_category_id"
+    t.index ["listing_id"], name: "index_states_on_listing_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_111637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inboxes", "listings"
+  add_foreign_key "inboxes", "users"
+  add_foreign_key "states", "categories"
+  add_foreign_key "states", "listings"
 end

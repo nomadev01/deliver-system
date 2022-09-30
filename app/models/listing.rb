@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: listings
@@ -15,4 +17,12 @@
 #
 class Listing < ApplicationRecord
   validates :title, presence: true, uniqueness: true
+  has_many :inboxes
+  belongs_to :user
+  belongs_to :categories
+  belongs_to :state
+
+
+
+
 end

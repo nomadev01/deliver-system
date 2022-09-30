@@ -1,0 +1,5 @@
+# Set envvars like
+# DATABASE_URL=postgresql://deploy:PASSWORD@127.0.0.1/APPNAME
+    # This above can also be set in your database.yml file in your rails project if you prefer...
+    # RAILS_MASTER_KEY=YOUR_KEY_IN_master.key
+    # SECRET_KEY_BASE=SOME_OTHER_RANDOM_KEY

@@ -1,17 +1,21 @@
-class ListingsController < ApplicationController
-  before_action :set_listing, only: %i[show edit update destroy]
+# frozen_string_literal: true
 
-  # GET /listings or /listings.json
-  def index
-    @listings = Listing.all
-  end
+class ListingsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :set_listing, only: %i[show edit update destroy]
+    # layout 'dashboard'
+
+    # GET /listings or /listings.json
+    def index
+      @listings = Listing.all
+    end
 
   # GET /listings/1 or /listings/1.json
   def show
-    if @listing.nil?
-      @listing.visits += 1
-      @listing.save
-    end
+    return unless @listing.nil?
+    @listing.visits += 1
+    @listing.save!
+
   end
 
   # GET /listings/new
@@ -71,4 +75,5 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:title, :description, :price, :discountedTo, :url, :visits, :stock)
   end
+
 end

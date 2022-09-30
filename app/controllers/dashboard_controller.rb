@@ -1,8 +1,11 @@
-class DashboardController < ApplicationController
-  layout "dashboard"
+# frozen_string_literal: true
 
-  def show
-  end
+
+class DashboardController < ApplicationController
+  before_action :authenticate_user!
+  layout 'dashboard'
+
+  def show; end
 
   def index
     @listings = Listing.all

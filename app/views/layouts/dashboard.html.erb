@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <nav id="header" class="bg-white fixed w-full z-10 top-0 shadow">
+  <%# <nav id="header" class="bg-white fixed w-full z-10 top-0 shadow">
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
       <div class="w-1/2 pl-2 md:pl-0">
         <a class="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
@@ -86,10 +86,16 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> %>
   <body>
-    <main class="container mx-auto mt-28 flex">
-      <%= yield %>
-    </main>
-  </body>
-</html>
+    <%= render 'shared/navigation' %>
+    <main class="container mx-auto mt-10 px-5 flex gap-5">
+      <%# <%= turbo_frame_tag "modal" do %>
+        <%= render 'shared/aside', class: " mr-10" %>
+        <%= yield %>
+        <%# <% end %>
+      </main>
+      <hr>
+      <%= render 'shared/footer' %>
+    </body>
+  </html>

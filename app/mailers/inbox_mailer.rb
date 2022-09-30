@@ -1,0 +1,2 @@
+class InboxMailer < ApplicationMailer
+end

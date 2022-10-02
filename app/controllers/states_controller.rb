@@ -39,6 +39,7 @@ class StatesController < ApplicationController
 
   # PATCH/PUT /states/1 or /states/1.json
   def update
+    UserMailer.with(user: @user).welcome_email.deliver_now
     respond_to do |format|
       if @state.update(state_params)
         format.html { redirect_to state_url(@state), notice: "State was successfully updated." }

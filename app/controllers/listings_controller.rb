@@ -43,6 +43,7 @@ class ListingsController < ApplicationController
 
   # PATCH/PUT /listings/1 or /listings/1.json
   def update
+
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to listing_url(@listing), notice: 'Listing was successfully updated.' }

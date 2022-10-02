@@ -27,4 +27,7 @@ class User < ApplicationRecord
   has_many :listings
   has_many :inboxes
   has_many :categories
+
+
+
 end

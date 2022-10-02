@@ -21,8 +21,4 @@ class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :categories
   belongs_to :state
-
-
-
-
 end

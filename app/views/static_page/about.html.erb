@@ -1,4 +1,919 @@
-<div>
-  <h1 class="font-bold text-4xl">StaticPage#about</h1>
-  <p>Find me in app/views/static_page/about.html.erb</p>
+<div id="root">
+  <div class="nk-app-root">
+    <div class="nk-sidebar">
+      <div class="nk-sidebar-bar is-theme">
+        <div class="nk-apps-brand"><a class="logo-link" href="/demo7/"><img class="logo-light logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiNWNhZTdmZi0zZTBjLTQyYjEtODM3OC1kZDRiOGEzMjFjNGQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MEM0MEQxN0VGNjREMTFFOTg0NjhGMUQ3RkFGOTVCRjAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MEM0MEQxN0RGNjREMTFFOTg0NjhGMUQ3RkFGOTVCRjAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDBFODg3OUNGMjVBMTFFOUJDQzc4RjA4NDlDMjBBMkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDBFODg3OURGMjVBMTFFOUJDQzc4RjA4NDlDMjBBMkEiLz4gPC9yZGY6RGVz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" alt="logo"><img class="logo-dark logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiNWNhZTdmZi0zZTBjLTQyYjEtODM3OC1kZDRiOGEzMjFjNGQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MEM0MEQxN0VGNjREMTFFOTg0NjhGMUQ3RkFGOTVCRjAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MEM0MEQxN0RGNjREMTFFOTg0NjhGMUQ3RkFGOTVCRjAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDBFODg3OUNGMjVBMTFFOUJDQzc4RjA4NDlDMjBBMkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDBFODg3OURGMjVBMTFFOUJDQzc4RjA4NDlDMjBBMkEiLz4gPC9yZGY6RGVz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" alt="logo-dark"></a></div>
+        <div class="nk-sidebar-element">
+          <div class="nk-sidebar-body">
+            <div data-simplebar="init" class="nk-sidebar-content">
+              <div class="simplebar-wrapper" style="margin: 0px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                  <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                  <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+                      <div class="simplebar-content" style="padding: 0px;">
+                        <div class="nk-sidebar-menu">
+                          <ul class="nk-menu apps-menu">
+                            <li class="nk-menu-item " id="page0"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-dashboard"></em></span></a></li>
+                            <li class="nk-menu-item " id="page1"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-menu-circled"></em></span></a></li>
+                            <li class="nk-menu-item active" id="page2"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-files"></em></span></a></li>
+                            <li class="nk-menu-item " id="page3"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-server"></em></span></a></li>
+                            <li class="nk-menu-item " id="page4"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-alert-c"></em></span></a></li>
+                            <li class="nk-menu-hr"></li>
+                            <li class="nk-menu-item " id="componentTooltip"><a href="#link" class="nk-menu-link nk-menu-switch"><span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="nk-sidebar-footer">
+                          <ul class="nk-menu nk-menu-md apps-menu">
+                            <li class="nk-menu-item" id="settingsTooltip"><a class="nk-menu-link" href="/demo7/user-profile-setting"><span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="simplebar-placeholder" style="width: auto; height: 445px;"></div>
+              </div>
+              <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+              </div>
+              <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                <div class="simplebar-scrollbar" style="height: 25px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
+              </div>
+            </div>
+            <div class="nk-sidebar-profile nk-sidebar-profile-fixed dropright dropdown"><a href="#toggle" aria-haspopup="true" class="dropdown-toggle" aria-expanded="false">
+                <div class="user-avatar bg-primary"><span>AB</span></div>
+              </a>
+              <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-md ml-4 dropdown-menu dropdown-menu-right">
+                <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                  <div class="user-card sm">
+                    <div class="user-avatar bg-primary"><span>AB</span></div>
+                    <div class="user-info"><span class="lead-text">Abu Bin Ishtiyak</span><span class="sub-text">info@softnio.com</span></div>
+                  </div>
+                </div>
+                <div class="dropdown-inner">
+                  <ul class="link-list">
+                    <li><a link="/user-profile-regular" icon="user-alt" href="/demo7/user-profile-regular"><em class="icon ni ni-user-alt"></em> <span>View Profile</span></a></li>
+                    <li><a link="/user-profile-setting" icon="setting-alt" href="/demo7/user-profile-setting"><em class="icon ni ni-setting-alt"></em> <span>Account Setting</span></a></li>
+                    <li><a link="/user-profile-activity" icon="activity-alt" href="/demo7/user-profile-activity"><em class="icon ni ni-activity-alt"></em> <span>Login Activity</span></a></li>
+                  </ul>
+                </div>
+                <div class="dropdown-inner">
+                  <ul class="link-list"><a href="/demo7/auth-login"><em class="icon ni ni-signout"></em><span>Sign Out</span></a></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nk-sidebar-main is-dark">
+        <div data-simplebar="init" class="nk-sidebar-inner">
+          <div class="simplebar-wrapper" style="margin: -24px -28px -32px;">
+            <div class="simplebar-height-auto-observer-wrapper">
+              <div class="simplebar-height-auto-observer"></div>
+            </div>
+            <div class="simplebar-mask">
+              <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+                  <div class="simplebar-content" style="padding: 24px 28px 32px;">
+                    <div class="nk-menu-content menu-active">
+                      <div class="d-flex justify-between">
+                        <h5 class="title mt-1">Pages</h5>
+                        <div class="mb-1"><a href="#toggle" class="nk-nav-toggle nk-quick-nav-icon d-xl-none"><em class="icon ni ni-arrow-left"></em></a></div>
+                      </div>
+                      <ul class="nk-menu" id="main-menu">
+                        <li class="nk-menu-item has-sub active"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span><span class="nk-menu-text">Projects</span></a>
+                          <div class="nk-menu-wrap" style="height: 76px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item active current-page"><a class="nk-menu-link active" href="/demo7/project-card" aria-current="page"><span class="nk-menu-text">Project Cards</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/project-list"><span class="nk-menu-text">Project List</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item has-sub"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-users"></em></span><span class="nk-menu-text">User Manage</span></a>
+                          <div class="nk-menu-wrap" style="height: 0px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/user-list-regular"><span class="nk-menu-text">User List - Regular</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/user-list-compact"><span class="nk-menu-text">User List - Compact</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/user-details-regular/1"><span class="nk-menu-text">User Details - Regular</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/user-profile-regular"><span class="nk-menu-text">User Profile - Regular</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/user-contact-card"><span class="nk-menu-text">User Contact - Card</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item has-sub"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span><span class="nk-menu-text">AML / KYCs</span></a>
+                          <div class="nk-menu-wrap" style="height: 0px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/kyc-list-regular"><span class="nk-menu-text">KYC List - Regular</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/kyc-details-regular/UD01544"><span class="nk-menu-text">KYC Details - Regular</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item has-sub"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span><span class="nk-menu-text">Transaction</span></a>
+                          <div class="nk-menu-wrap" style="height: 0px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/transaction-basic"><span class="nk-menu-text">Trans List - Basic</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/transaction-crypto"><span class="nk-menu-text">Trans List - Crypto</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item has-sub"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span><span class="nk-menu-text">Products</span></a>
+                          <div class="nk-menu-wrap" style="height: 0px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/product-list"><span class="nk-menu-text">Product List</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/product-card"><span class="nk-menu-text">Product Card</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/product-details/0"><span class="nk-menu-text">Product Details</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item has-sub"><a class="nk-menu-link nk-menu-toggle" href="/demo7undefined"><span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span><span class="nk-menu-text">Invoice</span></a>
+                          <div class="nk-menu-wrap" style="height: 0px;">
+                            <ul class="nk-menu-sub">
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/invoice-list"><span class="nk-menu-text">Invoice List</span></a></li>
+                              <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/invoice-details/1"><span class="nk-menu-text">Invoice Details</span></a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/pricing-table"><span class="nk-menu-icon"><em class="icon ni ni-view-col-fill"></em></span><span class="nk-menu-text">Pricing Table</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/image-gallery"><span class="nk-menu-icon"><em class="icon ni ni-img-fill"></em></span><span class="nk-menu-text">Image Gallery</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/_blank"><span class="nk-menu-icon"><em class="icon ni ni-file-fill"></em></span><span class="nk-menu-text">Blank / Startup</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/pages/faq"><span class="nk-menu-icon"><em class="icon ni ni-file-fill"></em></span><span class="nk-menu-text">Faqs / Help</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/pages/terms-policy"><span class="nk-menu-icon"><em class="icon ni ni-file-fill"></em></span><span class="nk-menu-text">Terms / Policy</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/pages/regular-v1"><span class="nk-menu-icon"><em class="icon ni ni-file-fill"></em></span><span class="nk-menu-text">Regular Page - v1</span></a></li>
+                        <li class="nk-menu-item"><a class="nk-menu-link" href="/demo7/pages/regular-v2"><span class="nk-menu-icon"><em class="icon ni ni-file-fill"></em></span><span class="nk-menu-text">Regular Page - v2</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="simplebar-placeholder" style="width: auto; height: 652px;"></div>
+          </div>
+          <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+          </div>
+          <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+            <div class="simplebar-scrollbar" style="height: 25px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nk-main">
+      <div class="nk-wrap">
+        <div class="nk-header nk-header-fixed">
+          <div class="container-fluid">
+            <div class="nk-header-wrap">
+              <div class="nk-menu-trigger d-xl-none ml-n1"><a href="#toggle" class="nk-nav-toggle nk-quick-nav-icon"><em class="icon ni ni-menu"></em></a></div>
+              <div class="nk-header-brand d-xl-none"><a class="logo-link" href="/demo7/"><img class="logo-light logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAABQCAYAAAD/YAtfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF7GlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDAgNzkuMTYwNDUxLCAyMDE3LzA1LzA2LTAxOjA4OjIxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiNWNhZTdmZi0zZTBjLTQyYjEtODM3OC1kZDRiOGEzMjFjNGQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDBFODg3OURGMjVBMTFFOUJDQzc4RjA4NDlDMjBBMkEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjRhNWU3YTEtYjJlYi00N2JiLTkwY2QtZTU3ZTMxNWU5MGY1IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAoTWFjaW50b3NoKSIgeG1w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" alt="logo"><img class="logo-dark logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAABQCAYAAAD/YAtfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiNWNhZTdmZi0zZTBjLTQyYjEtODM3OC1kZDRiOGEzMjFjNGQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjZFOTMzMDhGMjU5MTFFOUJDQzc4RjA4NDlDMjBBMkEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjZFOTMzMDdGMjU5MTFFOUJDQzc4RjA4NDlDMjBBMkEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6M0I0QUM5NjZFOENBMTFFOUEyRjBCMTMxREVFRTZDNzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6M0I0QUM5NjdFOENBMTFFOUEyRjBCMTMxREVFRTZDNzAiLz4gPC9yZGY6RGVz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" alt="logo"></a></div>
+              <div class="nk-header-search ml-3 ml-xl-0"><em class="icon ni ni-search"></em><input class="form-control border-transparent form-focus-none" type="text" placeholder="Search anything"></div>
+              <div class="nk-header-tools">
+                <ul class="nk-quick-nav">
+                  <li class="chats-dropdown hide-mb-xs">
+                    <div class="dropdown"><a href="#dropdown" aria-haspopup="true" class="nk-quick-nav-icon" aria-expanded="false">
+                        <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
+                      </a>
+                      <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-head"><span class="sub-title nk-dropdown-title">Recent Chats</span><a href="/demo7/user-profile-setting">Setting</a></div>
+                        <div class="dropdown-body">
+                          <ul class="chat-list"><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media bg-blue"><span>AB</span><span class="status dot dot-lg dot-gray"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">Abu Bin Ishtiak</div>
+                                  <span class="time">4.39 Am</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>This is really cool.</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-check-circle-fill"></em></div>
+                                </div>
+                              </div>
+                            </a><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media"><img src="data:image/jpeg;base64,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"><span class="status dot dot-lg dot-success"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">George Philips</div>
+                                  <span class="time">6 Apr</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>No I haven't. I will look into it</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-check-circle-fill"></em></div>
+                                </div>
+                              </div>
+                            </a><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media bg-primary"><span>IH</span><span class="status dot dot-lg dot-gray"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">Illiash Hossain</div>
+                                  <span class="time">Now</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>We just reset your account. Please check your email for verification.</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-check-circle-fill"></em></div>
+                                </div>
+                              </div>
+                            </a><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media"><img src="data:image/jpeg;base64,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"><span class="status dot dot-lg dot-success"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">Larry Hughes</div>
+                                  <span class="time">19 Apr</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>Great.</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-"></em></div>
+                                </div>
+                              </div>
+                            </a><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media bg-primary"><span>SG</span><span class="status dot dot-lg dot-success"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">Softnio Group</div>
+                                  <span class="time">5 May</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>I just bought a new computer but i am having some problem</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-check-circle"></em></div>
+                                </div>
+                              </div>
+                            </a><a class="chat-link" href="/demo7/app-chat">
+                              <div class="user-avatar chat-media bg-pink"><span>TW</span><span class="status dot dot-lg dot-success"></span></div>
+                              <div class="chat-info">
+                                <div class="chat-from">
+                                  <div class="name">Tammy Wilson</div>
+                                  <span class="time">2 May</span></div>
+                                <div class="chat-context">
+                                  <div class="text">
+                                    <p>I just bought a new computer but i am having some problem</p>
+                                  </div>
+                                  <div class="status delivered"><em class="icon ni ni-check-circle"></em></div>
+                                </div>
+                              </div>
+                            </a></ul>
+                        </div>
+                        <div class="dropdown-foot center"><a href="/demo7/app-chat">View All</a></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="notification-dropdown">
+                    <div class="user-dropdown dropdown"><a aria-haspopup="true" class="dropdown-toggle nk-quick-nav-icon" aria-expanded="false">
+                        <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
+                      </a>
+                      <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl dropdown-menu-s1 dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-head"><span class="sub-title nk-dropdown-title">Notifications</span><a href="#markasread">Mark All as Read</a></div>
+                        <div class="dropdown-body">
+                          <div class="nk-notification">
+                            <div class="nk-notification-item" id="note106">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-warning-dim icon ni ni-curve-down-right"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">You have requested to Widthdrawl</div>
+                                <div class="nk-notification-time">2 hrs ago</div>
+                              </div>
+                            </div>
+                            <div class="nk-notification-item" id="note105">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-success-dim icon ni ni-curve-down-left"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">Your Deposit Order is placed</div>
+                                <div class="nk-notification-time">5 hrs ago</div>
+                              </div>
+                            </div>
+                            <div class="nk-notification-item" id="note104">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-warning-dim icon ni ni-curve-down-right"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">You have requested to Widthdrawl</div>
+                                <div class="nk-notification-time">7 hrs ago</div>
+                              </div>
+                            </div>
+                            <div class="nk-notification-item" id="note103">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-success-dim icon ni ni-curve-down-left"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">Your Deposit Order is placed</div>
+                                <div class="nk-notification-time">8 hrs ago</div>
+                              </div>
+                            </div>
+                            <div class="nk-notification-item" id="note102">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-warning-dim icon ni ni-curve-down-right"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">You have requested to Widthdrawl</div>
+                                <div class="nk-notification-time">11 hrs ago</div>
+                              </div>
+                            </div>
+                            <div class="nk-notification-item" id="note101">
+                              <div class="nk-notification-icon"><em class="icon-circle  bg-success-dim icon ni ni-curve-down-left"></em></div>
+                              <div class="nk-notification-content">
+                                <div class="nk-notification-text">Your Deposit Order is placed</div>
+                                <div class="nk-notification-time">12 hrs ago</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown-foot center"><a href="#viewall">View All</a></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="user-dropdown">
+                    <div class="user-dropdown dropdown"><a href="#toggle" aria-haspopup="true" class="dropdown-toggle" aria-expanded="false">
+                        <div class="user-avatar sm"><em class="icon ni ni-user-alt"></em></div>
+                      </a>
+                      <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-md dropdown-menu-s1 dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                          <div class="user-card sm">
+                            <div class="user-avatar"><span>AB</span></div>
+                            <div class="user-info"><span class="lead-text">Abu Bin Ishtiyak</span><span class="sub-text">info@softnio.com</span></div>
+                          </div>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li><a link="/user-profile-regular" icon="user-alt" href="/demo7/user-profile-regular"><em class="icon ni ni-user-alt"></em> <span>View Profile</span></a></li>
+                            <li><a link="/user-profile-setting" icon="setting-alt" href="/demo7/user-profile-setting"><em class="icon ni ni-setting-alt"></em> <span>Account Setting</span></a></li>
+                            <li><a link="/user-profile-activity" icon="activity-alt" href="/demo7/user-profile-activity"><em class="icon ni ni-activity-alt"></em> <span>Login Activity</span></a></li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list"><a href="/demo7/auth-login"><em class="icon ni ni-signout"></em><span>Sign Out</span></a></ul>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nk-content">
+          <div class="container-fluid">
+            <div class="nk-content-inner">
+              <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                  <div class="nk-block-between ">
+                    <div class="nk-block-head-content">
+                      <h3 class="nk-block-title page-title"> Projects</h3>
+                      <div class="nk-block-des text-soft">You have total 19 projects</div>
+                    </div>
+                    <div class="nk-block-head-content">
+                      <div class="toggle-wrap nk-block-tools-toggle"><button class="btn btn-icon btn-trigger toggle-expand mr-n1 "><em class="icon ni ni-menu-alt-r"></em></button>
+                        <div class="toggle-expand-content" style="display: none;">
+                          <ul class="nk-block-tools g-3">
+                            <li>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" aria-expanded="false"><em class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filtered By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#dropdownitem" tabindex="0" role="menuitem" class="dropdown-item"><span>Open</span></a></li>
+                                    <li><a href="#dropdownitem" tabindex="0" role="menuitem" class="dropdown-item"><span>Closed</span></a></li>
+                                    <li><a href="#dropdownitem" tabindex="0" role="menuitem" class="dropdown-item"><span>OnGoing</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="nk-block-tools-opt"><button class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Project</span></button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="nk-block">
+                  <div class="row g-gs">
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-primary"><span>DD</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Dashlite Development</h6>
+                                  <span class="sub-text">Softnio</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Design and develop the DashLite template for Envato Marketplace</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>3 Tasks</span></div>
+                                <div class="project-progress-percent">3%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 3%;" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><span>AB</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-pink"><span>MB</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-light"><span>+1</span></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-light"><em class="icon ni ni-clock"></em><span>20 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-warning"><span>RW</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Redesign Website</h6>
+                                  <span class="sub-text">Runnergy</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Design the website for Runnergy main website including their user dashboard.</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>25 Tasks</span></div>
+                                <div class="project-progress-percent">10%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 10%;" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,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"></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><span>NJ</span></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-info"><span>KR</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Keyword Research for SEO</h6>
+                                  <span class="sub-text">Techyspec</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Improve SEO keyword research, A/B testing, Local market improvement</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>2 Tasks</span></div>
+                                <div class="project-progress-percent">13%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 13%;" role="progressbar" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,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"></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-danger"><em class="icon ni ni-clock"></em><span>Due Tomorrow</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-danger"><span>WD</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Website Development</h6>
+                                  <span class="sub-text">Fitness Next</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Develop the website using WordPree for the Fitness Next client.</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>44 Tasks</span></div>
+                                <div class="project-progress-percent">67%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 67%;" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><span>NJ</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,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"></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-info"><span>WK</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Website Keyword Research for SEO</h6>
+                                  <span class="sub-text">Techyspec</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Improve SEO keyword research, A/B testing, Local market improvement.</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>8 Tasks</span></div>
+                                <div class="project-progress-percent">8%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 8%;" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-pink"><span>JW</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,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"></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-light"><em class="icon ni ni-clock"></em><span>11 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-primary"><span>DD</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Dashlite Development</h6>
+                                  <span class="sub-text">Softnio</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Design and develop the DashLite template for Envato Marketplace</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>3 Tasks</span></div>
+                                <div class="project-progress-percent">12%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 12%;" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-pink"><span>JW</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><span>MB</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-light"><span>+3</span></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-light"><em class="icon ni ni-clock"></em><span>15 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-danger"><span>WD</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Website Development</h6>
+                                  <span class="sub-text">Fitness Next</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Develop the website using WordPree for the Fitness Next client.</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>44 Tasks</span></div>
+                                <div class="project-progress-percent">67%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 67%;" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><span>NJ</span></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgICAgJCAkKCgkNDgwODRMSEBASEx0VFhUWFR0sHCAcHCAcLCcvJiQmLydGNzExN0ZRREBEUWJYWGJ8dnyiotkBCAgICAkICQoKCQ0ODA4NExIQEBITHRUWFRYVHSwcIBwcIBwsJy8mJCYvJ0Y3MTE3RlFEQERRYlhYYnx2fKKi2f/CABEIAHgAeAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBwQFBgIBAP/aAAgBAQAAAACaQ3ZS1OVqtHrzhEPghuzVStr5x7NjTgCEUpfVJv7PKU5RNYAQFMXLUTfm/K3IR2TfBjFKVb2TJn0dUpAalnBiFKVT1uxY9XkMvn5r2BDKYigkNiXMkKHBduazglL8lPHrCu/VTjuWVrYBi5tV7TQyra0V2WBrGTAKVP7/AFirYl9llFIjT3LWnrEw4bjM45igXUaPIdsA1AqN40q5cb8S4ohdO+F3GUYXPscnZw1HU+2Dmo5ugzi0K6gBoFNBuNHq6jUXg6hcOSuJTUJtBa8f/8QAGQEBAAMBAQAAAAAAAAAAAAAAAwECBAUA/9oACAECEAAAAOmRAY1juFk58LevYPFjh7R1Dx4fKqbRy5aOj6swEGhHthSB0+bOEuFvV//EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAEABf/aAAgBAxAAAABZG5m8XmlVWYyl55XuMJ8iK+pRoRM6qxfJkTUdRAqI7BFmZNSRzOIO/8QAOBAAAgEDAgMHAgMFCQAAAAAAAQIDAAQRBSEGEjETIjJBUWGBFHFCodFSYpGxwRUjM0NykqLC8P/aAAgBAQABPwAJ7UEoJQT2oJ7UErVNatNMQBwXlI2QVc8WTCI8iBZD5HcVDxNqiPzfU/BUYqy4tk2F1bK6/tx7VaXdnfIXt5Q2Oo6MPuKMdGOilFPagtBaCUFoJWtaoml2Zl2aVsrEnqf0FOLmftLqYu7sSSx/pR7r7g1FaJcIShHNVrbScxUEq48vWoJJreRZoXMcqVpOoxalbFwOWVCBInofX7UyUy0VoCgtBaC07JFE8jsFRQST7Cr2/fVdSMpJx4YY/Ra0vhkvCr3fmNl6GpeCtLnBLoQa1DhWfTGM1sS8Q6ipoxlXGemx9vSpArIJMZIwD7itPvm0zUo5snsyeSQeqGiAwBBBBAINMtMtAUBQFAVxddNBphiXrKcH7CuDtOWaVrhlBEZ6nzao+gpRsN6liSVCrAVxDpItJCyDuOdvZqSbGVzgOKmPMN+uK4WvRd6SiE5e3JjP28qZaZaAoCgKArjebMyRfsRj8zXBVxbR6ewmmjjxKd3YCraa2kXMU6SD91gf5UrALnIxUvEKGc29lZTXMg6t4Ix92Na6t3eadIGe1EoGeVWbarhjyk+hDfx60X5sb/8AjXB952Gqvbk7XCf8lphTChQFKKArjI5v5f8AQtaNqRtLG4KWUU7dqMl05tmqynuIr0INOjgn8ygAGMZ8qspzPp4mK4fcEe4q/tLwoqwXCxBkYmTGe95DFR8Oa3cypNPfOe93/QrWrWf0tzcQEeE5+GpPMEb1aTvbXVtcqe9HIrVlXRXU91gCPmnFChQoVxS/aX9yPcVwNaxXcuoQSAEFUODX04tLdipOy1ZxPFYRqy+rH5qDklTfqDQRUFcaIg1RWUeOGiCJuniFEYUfY1oE/wBRpFoxJyqcpp6FClqV+SMnIz5Vqtwtzd3My+HICn2GwrhzUv7P1lGzhJO4aMqT2kgz40OKs4dSu4As1w0Sq5ClcZwOgOatrV4VcySl2JqWXCneuMCxuY5PSP8ArUyd4Hfrt81+AexrgybNlLF+w2RT0KFCuJr/AOmsnRT33BQfPU1GjzERohd3YKqqMknyAqz4JtbFPrNcudxuLeP/ALNWhaibmBUZHRgSMOCMgdDvVtcaw7uUvLeJM+BlJI/MVZ/W9pyNqZmGd/7sVIfauKJ4pr2VAQRHDv8AJojIQYP+Gp/pRGzY9D+tcF3HJeSQn8QpqFLQYKCT0ANcRal9VdNueRAQK4J0CC1s49UlYPPKmVPlGrenvV0+rcx+iit1QD/OYgsfgVrnEWuW2tWj6lYG3iiDKAO8HDdSGrTzp99DFJlXVgGBHmKH0kSgIEArW9YEETiAczevlSSyTzXsszEu4GT81Ie5Ft0jwaz0/OtDnNtqcL+WRT0tLWuXRt9LnIO7DlHzV0dzk7kkmuC7z6jhwwBu/Dkf7TmuKIdSutH7bSpHFyhVwq476jqN6tpG4i0Ew34Bm5GHTHLINs1w7PdQAwiZ15XIKg7ZGxq0d5DhyzfetTtuZGp4TE0+3XAothWyRsDv84rcq1QPyzxuCOgNQv2ltA+fFGp/KgaVq4oydNBAyA65q68bVwHPyfWjm3BjfHtupqwlAzCeg6farrS4ob4zh3RJTkhcBS/r81Y2D22tahbyA7TF091fcGoIggBq87yGtTIS5A/eJPxTk8rD2H61nx1C3ei+BVoCtlbL6Qp/Kg1GZEAyfsKv4rm5s5USAHI2561C1lgch05T1FWF/PYXMdxAe8p3Hky+amtK1OK4S2uYmzE4/hnqDTqs8JB9KvbJDcpORiVByN7rnakTuirwLFFI7kBVBJNX8/b3khz4jyinlDZb1Jx9h0ogFSd9zWk6RfajOnZxkRF95D4QBTEDAHkBTzCKJ5G6KCTWl23aATS4LsP4ewpkAUbVqWi2l8rwzJ4t0YfhatU4Yu7BmbIeLqD5iuGbuS2ujaOT2U/g9pB+tadP20CHNa0ii1dxs4FKGh5Mklcb1xZOPoUVG6vTmQs55TsN/msMxXbu7CoJLFUCujn12rTbv6Vy9nJKgbxRlSUNRamZFBkgZfcDIrVJCLUDPilQGtLkzElB9qcBgRitQgEsJj9qk02SHULbkOMzLg+m9WcCW8YVDtgb1rmDAAT+Jd/kVHIHQA+latYLcROD5lV+y53qDR4SJu0TxzM3xuAKi0m0hMEPZKVUlzn2qCG0AGIVz9qRY8eAUywrkFB9q//EACYRAAICAQMEAQUBAAAAAAAAAAECABEDEBIhIjFBcWEEEyMyQnL/2gAIAQIBAT8AMaMZdxmXmXepjTM9AzcSbubyD1G/mLxCNDDMo3K3+o6shoibbW2KivESmXQwwmN1Y8le5uubqXmYT0iA8iVDMjcUPMZyLAMdGRga4btHB8VFXYAupjH8noQnrI+Y17cin2BAIvMI4ngTNl+2O3JhzPvDGOVYbl7iN1LcrioigATdXcGoHxn+hPqv3X1opIMrphi6Gf/EACgRAAICAgECBAcBAAAAAAAAAAABAhEDIRIQMSIjQXEEIDJCUWGBcv/aAAgBAwEBPwAQhRpEY/olHj7CfVGGF0x6I8ZLSpkqaOzE+uKk4/5NSVqV7I8YyVJ+5kTjImtp/JDUsZWnbXfY1yk6erMq2v4ZF4WxdMUbdvsiNOSbrRHLCSbat+onzldUOXLY1af7QumNeX/SmlaIyi5Y5L8UzlvRLQntEqsxYudtvSIwhwcUqIxa0+zIXGfEX1E2xxbXhasePIvtZ8OvKl7nqLcRN80LTG2MXuf/2Q=="></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                      <div class="card-preview h-100 card">
+                        <div class="card-inner ">
+                          <div class="project">
+                            <div class="project-head"><a href="#title" class="project-title">
+                                <div class="user-avatar sq bg-warning"><span>RW</span></div>
+                                <div class="project-info">
+                                  <h6 class="title">Redesign Website</h6>
+                                  <span class="sub-text">Runnergy</span></div>
+                              </a>
+                              <div class="dropdown"><a aria-haspopup="true" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                  <ul class="link-list-opt no-bdr">
+                                    <li><a href="#edit" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
+                                    <li><a href="#markasdone" tabindex="0" role="menuitem" class="dropdown-item"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="project-details">Design the website for Runnergy main website including their user dashboard.</div>
+                            <div class="project-progress">
+                              <div class="project-progress-details">
+                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>25 Tasks</span></div>
+                                <div class="project-progress-percent">83%</div>
+                              </div>
+                              <div class="progress-pill progress-md bg-light progress">
+                                <div class="progress-bar" style="width: 83%;" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="project-meta">
+                              <ul class="project-users g-1">
+                                <li>
+                                  <div class="user-avatar sm bg-primary"><img src="data:image/jpeg;base64,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"></div>
+                                </li>
+                                <li>
+                                  <div class="user-avatar sm bg-orange"><span>RD</span></div>
+                                </li>
+                              </ul>
+                              <span class="badge badge-dim badge-light"><em class="icon ni ni-clock"></em><span>25 Days Left</span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-5"><nav class="" aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item disabled"><a href="#prev" class="page-link-prev page-link"><em class="icon ni ni-chevrons-left"></em><span>Prev</span></a></li>
+                        <li class="active page-item"><a href="#pageitem" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#pageitem" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#pageitem" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#next" class="page-link-next page-link"><span>Next</span><em class="icon ni ni-chevrons-right"></em></a></li>
+                      </ul>
+                    </nav></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nk-sticky-toolbar">
+    <li class="demo-layout"><a class="toggle tipinfo" href="#dashlite" id="s-tool-dashlite"><em class="icon ni ni-dashlite"></em></a></li>
+    <li class="demo-thumb"><a class="toggle tipinfo" href="#use-case" id="s-tool-case"><em class="icon ni ni-menu-squared"></em></a></li>
+    <li class="demo-settings"><a class="toggle tipinfo" href="#setting" id="s-tool-setting"><em class="icon ni ni-setting-alt"></em></a></li>
+    <li class="demo-purchase"><a class="tipinfo" target="_blank" rel="noreferrer" href="https://1.envato.market/reactdashlite" id="s-tool-purchase"><em class="icon ni ni-cart"></em></a></li>
+  </ul>
+  <div class="nk-demo-panel nk-demo-panel-2x toggle-slide toggle-slide-right ">
+    <div class="nk-demo-head">
+      <h6 class="mb-0">Switch Demo Layout</h6>
+      <a class="nk-demo-close toggle btn btn-icon btn-trigger revarse mr-n2" href="#toggle"><em class="icon ni ni-cross"></em></a></div>
+    <div data-simplebar="init" class="nk-demo-list">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+              <div class="simplebar-content" style="padding: 0px;">
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo1/">
+                    <div class="nk-demo-image bg-blue"><img class="bg-purple" src="https://react.dashlite.net/images/landing/layout-1d.jpg" srcset="https://react.dashlite.net/images/landing/layout-1d2x.jpg" alt="Demo Layout 1"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 1</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo2/">
+                    <div class="nk-demo-image bg-purple"><img src="https://react.dashlite.net/images/landing/layout-2d.jpg" srcset="https://react.dashlite.net/images/landing/layout-2d2x.jpg" alt="Demo Layout 2"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 2</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo3/">
+                    <div class="nk-demo-image bg-success"><img src="https://react.dashlite.net/images/landing/layout-3d.jpg" srcset="https://react.dashlite.net/images/landing/layout-3d2x.jpg" alt="Demo Layout 3"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 3</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo4/">
+                    <div class="nk-demo-image bg-indigo"><img src="https://react.dashlite.net/images/landing/layout-4d.jpg" srcset="https://react.dashlite.net/images/landing/layout-4d2x.jpg" alt="Demo Layout 4"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 4</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo5/">
+                    <div class="nk-demo-image bg-warning"><img src="https://react.dashlite.net/images/landing/layout-5d.jpg" srcset="https://react.dashlite.net/images/landing/layout-5d2x.jpg" alt="Demo Layout 5"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 5</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo6/">
+                    <div class="nk-demo-image bg-purple"><img src="https://react.dashlite.net/images/landing/layout-6d.jpg" srcset="https://react.dashlite.net/images/landing/layout-6d2x.jpg" alt="Demo Layout 6"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 6</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo7/">
+                    <div class="nk-demo-image bg-pink"><img src="https://react.dashlite.net/images/landing/layout-7d.jpg" srcset="https://react.dashlite.net/images/landing/layout-7d2x.jpg" alt="Demo Layout 7"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 7</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo8/">
+                    <div class="nk-demo-image bg-success"><img src="https://react.dashlite.net/images/landing/layout-8d.jpg" srcset="https://react.dashlite.net/images/landing/layout-8d2x.jpg" alt="Demo Layout 8"></div>
+                    <span class="nk-demo-title"><strong>Demo Layout 8</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/landing/">
+                    <div class="nk-demo-image bg-red"><img src="https://react.dashlite.net/images/landing/main-landing.jpg" srcset="https://react.dashlite.net/images/landing/main-landing2x.jpg" alt="Landing"></div>
+                    <span class="nk-demo-title"><strong>Landing Page </strong><span class="badge badge-danger ml-1">Free</span></span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 1329px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+        <div class="simplebar-scrollbar" style="height: 25px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="nk-demo-panel toggle-slide toggle-slide-right ">
+    <div class="nk-demo-head">
+      <h6 class="mb-0">Use Case Concept</h6>
+      <a class="nk-demo-close toggle btn btn-icon btn-trigger revarse mr-n2" href="#toggle"><em class="icon ni ni-cross"></em></a></div>
+    <div data-simplebar="init" class="nk-demo-list">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+              <div class="simplebar-content" style="padding: 0px;">
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo2/ecommerce/index">
+                    <div class="nk-demo-image bg-dark"><img src="https://react.dashlite.net/images/landing/demo-ecommerce.jpg" srcset="https://react.dashlite.net/images/landing/demo-ecommerce2x.jpg" alt="Ecommerce"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 2</em><br>
+                      <strong>E-Commerce Panel</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo2/app-messages">
+                    <div class="nk-demo-image bg-success"><img src="https://react.dashlite.net/images/landing/demo-messages.jpg" srcset="https://react.dashlite.net/images/landing/demo-messages2x.jpg" alt="Messages"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 2</em><br>
+                      <strong>Apps - Messages</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo1/app-chat">
+                    <div class="nk-demo-image bg-purple"><img src="https://react.dashlite.net/images/landing/demo-chats.jpg" srcset="https://react.dashlite.net/images/landing/demo-chats2x.jpg" alt="Chat"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 1</em><br>
+                      <strong>Apps - Chat</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo3/app-inbox">
+                    <div class="nk-demo-image bg-blue"><img src="https://react.dashlite.net/images/landing/demo-inbox.jpg" srcset="https://react.dashlite.net/images/landing/demo-inbox2x.jpg" alt="Inbox"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 3</em><br>
+                      <strong>Apps - Mailbox</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo3/app-file-manager">
+                    <div class="nk-demo-image bg-pink"><img src="https://react.dashlite.net/images/landing/demo-file-manager.jpg" srcset="https://react.dashlite.net/images/landing/demo-file-manager2x.jpg" alt="FileManager"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 3</em><br>
+                      <strong>Apps - File Manager</strong></span></a></div>
+                <div class="nk-demo-item"><a href="https://react.dashlite.net/demo6/invest">
+                    <div class="nk-demo-image bg-orange"><img src="https://react.dashlite.net/images/landing/demo-invest.jpg" srcset="https://react.dashlite.net/images/landing/demo-invest2x.jpg" alt="Invest"></div>
+                    <span class="nk-demo-title"><em class="text-primary">Demo 6</em><br>
+                      <strong>HYIP / Investment Panel</strong></span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 1697px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+        <div class="simplebar-scrollbar" style="height: 25px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="nk-demo-panel toggle-slide toggle-slide-right ">
+    <div class="nk-demo-head">
+      <h6 class="mb-0">Preview Settings</h6>
+      <a class="nk-demo-close toggle btn btn-icon btn-trigger revarse mr-n2" href="#toggle"><em class="icon ni ni-cross"></em></a></div>
+    <div data-simplebar="init" class="nk-opt-panel">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+              <div class="simplebar-content" style="padding: 0px;">
+                <div class="nk-opt-set">
+                  <div class="nk-opt-set-title">Main UI Style</div>
+                  <div class="nk-opt-list col-2x">
+                    <div class="nk-opt-item only-text "><span class="nk-opt-item-bg"><span class="nk-opt-item-name">Default</span></span></div>
+                    <div class="nk-opt-item only-text active"><span class="nk-opt-item-bg"><span class="nk-opt-item-name">Softy</span></span></div>
+                  </div>
+                </div>
+                <div class="nk-opt-set nk-opt-set-aside">
+                  <div class="nk-opt-set-title">Sidebar Style</div>
+                  <div class="nk-opt-list col-4x">
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg is-light"><span class="bg-lighter"></span></span><span class="nk-opt-item-name">White</span></div>
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg is-light"><span class="bg-light"></span></span><span class="nk-opt-item-name">Light</span></div>
+                    <div class="nk-opt-item active"><span class="nk-opt-item-bg"><span class="bg-dark"></span></span><span class="nk-opt-item-name">Dark</span></div>
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg"><span class="bg-theme"></span></span><span class="nk-opt-item-name">Theme</span></div>
+                  </div>
+                </div>
+                <div class="nk-opt-set nk-opt-set-aside">
+                  <div class="nk-opt-set-title">Nav Side Style</div>
+                  <div class="nk-opt-list col-4x">
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg is-light"><span class="bg-lighter"></span></span><span class="nk-opt-item-name">White</span></div>
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg is-light"><span class="bg-light"></span></span><span class="nk-opt-item-name">Light</span></div>
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg"><span class="bg-dark"></span></span><span class="nk-opt-item-name">Dark</span></div>
+                    <div class="nk-opt-item active"><span class="nk-opt-item-bg"><span class="bg-theme"></span></span><span class="nk-opt-item-name">Theme</span></div>
+                  </div>
+                </div>
+                <div class="nk-opt-set">
+                  <div class="nk-opt-set-title">Skin Mode</div>
+                  <div class="nk-opt-list col-2x">
+                    <div class="nk-opt-item active"><span class="nk-opt-item-bg is-light"><span class="theme-light"></span></span><span class="nk-opt-item-name">Light Skin</span></div>
+                    <div class="nk-opt-item "><span class="nk-opt-item-bg"><span class="theme-dark"></span></span><span class="nk-opt-item-name">Dark Skin</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 508px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+        <div class="simplebar-scrollbar" style="height: 25px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
+      </div>
+    </div>
+    <div class="nk-opt-reset"><a href="#reset" class="reset-opt-setting">Reset Setting</a></div>
+  </div>
 </div>

@@ -1,8 +1,8 @@
 class StatesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_state, only: %i[ show edit update destroy ]
+  before_action :set_state, only: %i[show edit update destroy]
 
-  layout 'dashboard'
+  layout "dashboard"
 
   # GET /states or /states.json
   def index
@@ -39,9 +39,10 @@ class StatesController < ApplicationController
 
   # PATCH/PUT /states/1 or /states/1.json
   def update
-    UserMailer.with(user: @user).welcome_email.deliver_now
     respond_to do |format|
       if @state.update(state_params)
+        UserMailer.with(user: @user).welcome_email
+
         format.html { redirect_to state_url(@state), notice: "State was successfully updated." }
         format.json { render :show, status: :ok, location: @state }
       else
@@ -62,13 +63,14 @@ class StatesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_state
-      @state = State.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def state_params
-      params.require(:state).permit(:name, :description, :category_id, :listing_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_state
+    @state = State.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def state_params
+    params.require(:state).permit(:name, :description, :category_id, :listing_id)
+  end
 end

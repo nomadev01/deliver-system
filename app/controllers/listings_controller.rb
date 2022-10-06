@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 class ListingsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_listing, only: %i[show edit update destroy]
-    # layout 'dashboard'
+  before_action :authenticate_user!
+  before_action :set_listing, only: %i[show edit update destroy]
 
-    # GET /listings or /listings.json
-    def index
-      @listings = Listing.all
-    end
+  # layout 'dashboard'
+
+  # GET /listings or /listings.json
+  def index
+    @listings = Listing.all
+  end
 
   # GET /listings/1 or /listings/1.json
   def show
     return unless @listing.nil?
     @listing.visits += 1
     @listing.save!
-
   end
 
   # GET /listings/new
@@ -24,7 +24,8 @@ class ListingsController < ApplicationController
   end
 
   # GET /listings/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /listings or /listings.json
   def create
@@ -32,7 +33,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to listing_url(@listing), notice: 'Listing was successfully created.' }
+        format.html { redirect_to listing_url(@listing), notice: "Listing was successfully created." }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,10 +44,9 @@ class ListingsController < ApplicationController
 
   # PATCH/PUT /listings/1 or /listings/1.json
   def update
-
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to listing_url(@listing), notice: 'Listing was successfully updated.' }
+        format.html { redirect_to listing_url(@listing), notice: "Listing was successfully updated." }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class ListingsController < ApplicationController
     @listing.destroy
 
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_url, notice: "Listing was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -76,5 +76,4 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:title, :description, :price, :discountedTo, :url, :visits, :stock)
   end
-
 end

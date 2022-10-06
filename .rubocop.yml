@@ -1,4 +1,3 @@
-
 require:
   - standard
   - rubocop-rails
@@ -6,31 +5,29 @@ require:
 
 inherit_gem:
   standard: config/base.yml
+# AllCops:
+#   NewCops: enable
+#   # Lint:
+#   #   Severity: error
+#   # Metrics/CyclomaticComplexity:
+#   #   Severity: warning
+#   Exclude:
+#         <% `git status --ignored --porcelain`.lines.grep(/^!! /).each do |path| %>
+#           - <%= path.sub(/^!! /, '') %>
+#         <% end %>
+#         - '**/*.rb'
+#         - '**/*.gemfile'
+#         - '**/*.gemspec'
+#         - '**/*.rake'
+#         - '**/*.ru'
+#         - '**/Gemfile'
+#         - '**/Rakefile'
 
-AllCops:
-  NewCops: enable
-  # Lint:
-  #   Severity: error
-  # Metrics/CyclomaticComplexity:
-  #   Severity: warning
-  Exclude:
-        <% `git status --ignored --porcelain`.lines.grep(/^!! /).each do |path| %>
-          - <%= path.sub(/^!! /, '') %>
-        <% end %>
-        - '**/*.rb'
-        - '**/*.gemfile'
-        - '**/*.gemspec'
-        - '**/*.rake'
-        - '**/*.ru'
-        - '**/Gemfile'
-        - '**/Rakefile'
-
-
-Rails:
-  Enabled: true # enable rubocop-rails cops
-RSpec:
-  Enabled: true # enable rubocop-rspec cops
-RSpec/DescribeClass:
-  Enabled: false # ignore missing comments on classes
-Bundler/DuplicatedGem:
-  Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting
+# Rails:
+#   Enabled: true # enable rubocop-rails cops
+# RSpec:
+#   Enabled: true # enable rubocop-rspec cops
+# RSpec/DescribeClass:
+#   Enabled: false # ignore missing comments on classes
+# Bundler/DuplicatedGem:
+#   Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting
